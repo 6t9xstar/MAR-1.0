@@ -1,108 +1,285 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
   <defs>
+    <!-- Background gradient -->
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0a1628"/>
-      <stop offset="50%" style="stop-color:#1a3a5c"/>
-      <stop offset="100%" style="stop-color:#0a1628"/>
+      <stop offset="0%" style="stop-color:#050a18"/>
+      <stop offset="50%" style="stop-color:#0d1b2a"/>
+      <stop offset="100%" style="stop-color:#0a0520"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#1eb854"/>
-      <stop offset="100%" style="stop-color:#ffffff"/>
+    <!-- Glow effects -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-strong">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-mega">
+      <feGaussianBlur stdDeviation="16" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Text gradients -->
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#64ffda"/>
+      <stop offset="30%" style="stop-color:#00e5ff"/>
+      <stop offset="60%" style="stop-color:#b388ff"/>
+      <stop offset="100%" style="stop-color:#69f0ae"/>
+    </linearGradient>
+    <linearGradient id="green-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#69f0ae"/>
+      <stop offset="100%" style="stop-color:#1b5e20"/>
+    </linearGradient>
+    <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00bcd4"/>
+      <stop offset="100%" style="stop-color:#64ffda"/>
+    </linearGradient>
+    <linearGradient id="purple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#b388ff"/>
+      <stop offset="100%" style="stop-color:#7c4dff"/>
+    </linearGradient>
+    <!-- Radial glow for background -->
+    <radialGradient id="radial-glow" cx="30%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#050a18;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="green-glow" cx="70%" cy="50%" r="40%">
+      <stop offset="0%" style="stop-color:#1eb854;stop-opacity:0.06"/>
+      <stop offset="100%" style="stop-color:#050a18;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Pakistan green gradient -->
+    <linearGradient id="pk-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#01411C"/>
+      <stop offset="100%" style="stop-color:#1eb854"/>
     </linearGradient>
   </defs>
+
+  <!-- Background -->
   <rect width="1280" height="640" fill="url(#bg)"/>
-  <!-- Grid lines -->
-  <g opacity="0.05" stroke="#64ffda" stroke-width="0.5">
-    <line x1="0" y1="160" x2="1280" y2="160"/>
-    <line x1="0" y1="320" x2="1280" y2="320"/>
-    <line x1="0" y1="480" x2="1280" y2="480"/>
-    <line x1="320" y1="0" x2="320" y2="640"/>
-    <line x1="640" y1="0" x2="640" y2="640"/>
-    <line x1="960" y1="0" x2="960" y2="640"/>
+  <rect width="1280" height="640" fill="url(#radial-glow)"/>
+  <rect width="1280" height="640" fill="url(#green-glow)"/>
+
+  <!-- Neural network nodes - scattered across background -->
+  <g opacity="0.08" stroke="#64ffda" fill="none" stroke-width="0.5">
+    <!-- Connection lines -->
+    <line x1="100" y1="120" x2="250" y2="200"/>
+    <line x1="250" y1="200" x2="180" y2="350"/>
+    <line x1="180" y1="350" x2="350" y2="420"/>
+    <line x1="350" y1="420" x2="500" y2="300"/>
+    <line x1="500" y1="300" x2="620" y2="180"/>
+    <line x1="620" y1="180" x2="750" y2="250"/>
+    <line x1="750" y1="250" x2="900" y2="150"/>
+    <line x1="900" y1="150" x2="1050" y2="200"/>
+    <line x1="1050" y1="200" x2="1180" y2="350"/>
+    <line x1="1180" y1="350" x2="1100" y2="500"/>
+    <line x1="1100" y1="500" x2="900" y2="550"/>
+    <line x1="900" y1="550" x2="700" y2="500"/>
+    <line x1="700" y1="500" x2="500" y2="550"/>
+    <line x1="500" y1="550" x2="300" y2="500"/>
+    <line x1="300" y1="500" x2="100" y2="450"/>
+    <!-- Cross connections -->
+    <line x1="250" y1="200" x2="500" y2="300"/>
+    <line x1="620" y1="180" x2="900" y2="550"/>
+    <line x1="350" y1="420" x2="700" y2="250"/>
+    <line x1="180" y1="350" x2="400" y2="150"/>
+    <line x1="1050" y1="200" x2="800" y2="450"/>
+    <line x1="750" y1="250" x2="1100" y2="500"/>
+    <line x1="500" y1="300" x2="300" y2="500"/>
+    <line x1="900" y1="150" x2="1180" y2="350"/>
   </g>
-  <!-- Pakistan flag crescent (abstract) -->
-  <circle cx="120" cy="100" r="60" fill="none" stroke="#1eb854" stroke-width="2" opacity="0.3"/>
-  <circle cx="130" cy="90" r="40" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.2"/>
-  <!-- Title -->
-  <text x="80" y="200" font-family="system-ui, sans-serif" font-size="96" font-weight="900" fill="#ffffff">MAR</text>
-  <text x="80" y="260" font-family="system-ui, sans-serif" font-size="48" font-weight="500" fill="url(#accent)">1.0</text>
+
+  <!-- Neural network nodes (dots) -->
+  <g filter="url(#glow)">
+    <circle cx="100" cy="120" r="3" fill="#64ffda" opacity="0.3"/>
+    <circle cx="250" cy="200" r="4" fill="#00e5ff" opacity="0.4"/>
+    <circle cx="180" cy="350" r="3" fill="#b388ff" opacity="0.3"/>
+    <circle cx="350" cy="420" r="3" fill="#69f0ae" opacity="0.3"/>
+    <circle cx="500" cy="300" r="5" fill="#64ffda" opacity="0.5"/>
+    <circle cx="620" cy="180" r="3" fill="#00e5ff" opacity="0.3"/>
+    <circle cx="750" cy="250" r="4" fill="#b388ff" opacity="0.4"/>
+    <circle cx="900" cy="150" r="3" fill="#64ffda" opacity="0.3"/>
+    <circle cx="1050" cy="200" r="4" fill="#00e5ff" opacity="0.4"/>
+    <circle cx="1180" cy="350" r="3" fill="#b388ff" opacity="0.3"/>
+    <circle cx="1100" cy="500" r="3" fill="#69f0ae" opacity="0.3"/>
+    <circle cx="900" cy="550" r="4" fill="#64ffda" opacity="0.4"/>
+    <circle cx="700" cy="500" r="3" fill="#00e5ff" opacity="0.3"/>
+    <circle cx="500" cy="550" r="3" fill="#b388ff" opacity="0.3"/>
+    <circle cx="300" cy="500" r="3" fill="#69f0ae" opacity="0.3"/>
+    <circle cx="100" cy="450" r="3" fill="#64ffda" opacity="0.3"/>
+  </g>
+
+  <!-- Floating particles -->
+  <g filter="url(#glow)" opacity="0.6">
+    <circle cx="80" cy="80" r="2" fill="#64ffda"/>
+    <circle cx="1200" cy="100" r="2" fill="#00e5ff"/>
+    <circle cx="600" cy="50" r="1.5" fill="#b388ff"/>
+    <circle cx="400" cy="600" r="2" fill="#69f0ae"/>
+    <circle cx="1150" cy="550" r="1.5" fill="#00e5ff"/>
+    <circle cx="200" cy="50" r="1.5" fill="#b388ff"/>
+    <circle cx="800" cy="620" r="2" fill="#64ffda"/>
+    <circle cx="950" cy="80" r="1.5" fill="#69f0ae"/>
+  </g>
+
+  <!-- Pakistan crescent and star (top-left, prominent) -->
+  <g transform="translate(60, 50)" filter="url(#glow-strong)">
+    <!-- Crescent -->
+    <circle cx="50" cy="50" r="45" fill="none" stroke="#69f0ae" stroke-width="2.5" opacity="0.9"/>
+    <circle cx="62" cy="42" r="35" fill="url(#bg)"/>
+    <!-- Star -->
+    <polygon points="95,35 99,48 113,48 102,57 106,70 95,61 84,70 88,57 77,48 91,48" fill="#69f0ae" opacity="0.9"/>
+  </g>
+
+  <!-- Main title block -->
+  <g transform="translate(160, 100)">
+    <!-- MAR text with glow -->
+    <text x="0" y="110" font-family="'Segoe UI', system-ui, sans-serif" font-size="130" font-weight="900" fill="url(#title-grad)" filter="url(#glow-mega)" letter-spacing="-4">MAR</text>
+    <!-- Version -->
+    <text x="0" y="185" font-family="'Segoe UI', system-ui, sans-serif" font-size="64" font-weight="200" fill="#00e5ff" filter="url(#glow)" letter-spacing="8">1.0</text>
+    <!-- Underline glow -->
+    <line x1="0" y1="200" x2="420" y2="200" stroke="url(#cyan-grad)" stroke-width="2" filter="url(#glow)" opacity="0.8"/>
+    <line x1="0" y1="205" x2="420" y2="205" stroke="url(#cyan-grad)" stroke-width="1" opacity="0.3"/>
+  </g>
+
   <!-- Tagline -->
-  <text x="80" y="310" font-family="system-ui, sans-serif" font-size="20" fill="#8892b0">
-    <tspan>Urdu-English Bilingual Foundation Model</tspan>
-  </text>
-  <!-- Badge row -->
-  <g transform="translate(80, 360)">
-    <rect width="120" height="28" rx="4" fill="#1eb854" opacity="0.9"/>
-    <text x="60" y="18" font-family="monospace" font-size="11" fill="#ffffff" text-anchor="middle">347M - 8B</text>
+  <g transform="translate(160, 330)">
+    <text font-family="'Segoe UI', system-ui, sans-serif" font-size="22" fill="#b0bec5" font-weight="300" letter-spacing="0.5">
+      <tspan>Urdu-English Bilingual Foundation Model</tspan>
+    </text>
+    <text y="28" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#64ffda" font-weight="400" opacity="0.8" letter-spacing="2">
+      <tspan>FOR PAKISTAN</tspan>
+    </text>
   </g>
-  <g transform="translate(220, 360)">
-    <rect width="100" height="28" rx="4" fill="#64ffda" opacity="0.2"/>
-    <text x="50" y="18" font-family="monospace" font-size="11" fill="#64ffda" text-anchor="middle">GQA</text>
+
+  <!-- Feature pills row -->
+  <g transform="translate(160, 400)" filter="url(#glow)">
+    <!-- 347M-8B -->
+    <rect width="130" height="32" rx="16" fill="none" stroke="#64ffda" stroke-width="1.5" opacity="0.7"/>
+    <text x="65" y="21" font-family="monospace" font-size="13" fill="#64ffda" text-anchor="middle" font-weight="bold">347M → 8B</text>
+    <!-- GQA -->
+    <g transform="translate(150, 0)">
+      <rect width="80" height="32" rx="16" fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.7"/>
+      <text x="40" y="21" font-family="monospace" font-size="13" fill="#00e5ff" text-anchor="middle" font-weight="bold">GQA</text>
+    </g>
+    <!-- SwiGLU -->
+    <g transform="translate(250, 0)">
+      <rect width="100" height="32" rx="16" fill="none" stroke="#b388ff" stroke-width="1.5" opacity="0.7"/>
+      <text x="50" y="21" font-family="monospace" font-size="13" fill="#b388ff" text-anchor="middle" font-weight="bold">SwiGLU</text>
+    </g>
+    <!-- RoPE -->
+    <g transform="translate(370, 0)">
+      <rect width="80" height="32" rx="16" fill="none" stroke="#69f0ae" stroke-width="1.5" opacity="0.7"/>
+      <text x="40" y="21" font-family="monospace" font-size="13" fill="#69f0ae" text-anchor="middle" font-weight="bold">RoPE</text>
+    </g>
+    <!-- RMSNorm -->
+    <g transform="translate(470, 0)">
+      <rect width="110" height="32" rx="16" fill="none" stroke="#ff80ab" stroke-width="1.5" opacity="0.7"/>
+      <text x="55" y="21" font-family="monospace" font-size="13" fill="#ff80ab" text-anchor="middle" font-weight="bold">RMSNorm</text>
+    </g>
   </g>
-  <g transform="translate(340, 360)">
-    <rect width="100" height="28" rx="4" fill="#64ffda" opacity="0.2"/>
-    <text x="50" y="18" font-family="monospace" font-size="11" fill="#64ffda" text-anchor="middle">SwiGLU</text>
+
+  <!-- Bottom bar -->
+  <g transform="translate(160, 470)">
+    <text font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#607d8b" letter-spacing="1">
+      <tspan>Open Source</tspan>
+      <tspan dx="20" fill="#37474f">•</tspan>
+      <tspan dx="20" fill="#b0bec5">MIT License</tspan>
+      <tspan dx="20" fill="#37474f">•</tspan>
+      <tspan dx="20" fill="#b0bec5">CPU-First</tspan>
+      <tspan dx="20" fill="#37474f">•</tspan>
+      <tspan dx="20" fill="#b0bec5">Citation-Safe</tspan>
+      <tspan dx="20" fill="#37474f">•</tspan>
+      <tspan dx="20" fill="#b0bec5">Domain-Expert</tspan>
+    </text>
   </g>
-  <g transform="translate(460, 360)">
-    <rect width="100" height="28" rx="4" fill="#64ffda" opacity="0.2"/>
-    <text x="50" y="18" font-family="monospace" font-size="11" fill="#64ffda" text-anchor="middle">RoPE</text>
+
+  <!-- Right side: tech stack cards -->
+  <g transform="translate(780, 80)">
+    <!-- Card 1: Rust -->
+    <g filter="url(#glow)">
+      <rect x="0" y="0" width="200" height="70" rx="8" fill="#112240" stroke="#ff8a65" stroke-width="1" opacity="0.85"/>
+      <text x="20" y="30" font-family="monospace" font-size="14" fill="#ff8a65" font-weight="bold">🦀 Rust + Axum</text>
+      <text x="20" y="52" font-family="monospace" font-size="11" fill="#78909c">0.9ms p50 · 24K req/s</text>
+    </g>
+    <!-- Card 2: Python -->
+    <g transform="translate(220, 0)" filter="url(#glow)">
+      <rect x="0" y="0" width="200" height="70" rx="8" fill="#112240" stroke="#42a5f5" stroke-width="1" opacity="0.85"/>
+      <text x="20" y="30" font-family="monospace" font-size="14" fill="#42a5f5" font-weight="bold">🐍 PyTorch</text>
+      <text x="20" y="52" font-family="monospace" font-size="11" fill="#78909c">BF16 · AdamW · Cosine LR</text>
+    </g>
+    <!-- Card 3: GGUF -->
+    <g transform="translate(0, 85)" filter="url(#glow)">
+      <rect x="0" y="0" width="200" height="70" rx="8" fill="#112240" stroke="#64ffda" stroke-width="1" opacity="0.85"/>
+      <text x="20" y="30" font-family="monospace" font-size="14" fill="#64ffda" font-weight="bold">⚡ GGUF + llama.cpp</text>
+      <text x="20" y="52" font-family="monospace" font-size="11" fill="#78909c">CPU inference · 4-6 tok/s</text>
+    </g>
+    <!-- Card 4: Tauri -->
+    <g transform="translate(220, 85)" filter="url(#glow)">
+      <rect x="0" y="0" width="200" height="70" rx="8" fill="#112240" stroke="#b388ff" stroke-width="1" opacity="0.85"/>
+      <text x="20" y="30" font-family="monospace" font-size="14" fill="#b388ff" font-weight="bold">🖥️ Tauri Desktop</text>
+      <text x="20" y="52" font-family="monospace" font-size="11" fill="#78909c">~5MB binary · 30MB RAM</text>
+    </g>
+    <!-- Card 5: Infra -->
+    <g transform="translate(0, 170)" filter="url(#glow)">
+      <rect x="0" y="0" width="200" height="70" rx="8" fill="#112240" stroke="#69f0ae" stroke-width="1" opacity="0.85"/>
+      <text x="20" y="30" font-family="monospace" font-size="14" fill="#69f0ae" font-weight="bold">🗄️ PostgreSQL + pgvector</text>
+      <text x="20" y="52" font-family="monospace" font-size="11" fill="#78909c">ACID + vector search</text>
+    </g>
+    <!-- Card 6: Qdrant -->
+    <g transform="translate(220, 170)" filter="url(#glow)">
+      <rect x="0" y="0" width="200" height="70" rx="8" fill="#112240" stroke="#00e5ff" stroke-width="1" opacity="0.85"/>
+      <text x="20" y="30" font-family="monospace" font-size="14" fill="#00e5ff" font-weight="bold">🔍 Qdrant + Meilisearch</text>
+      <text x="20" y="52" font-family="monospace" font-size="11" fill="#78909c">&lt;5ms · 10M vectors</text>
+    </g>
+    <!-- Card 7: DragonflyDB -->
+    <g transform="translate(110, 255)" filter="url(#glow)">
+      <rect x="0" y="0" width="200" height="70" rx="8" fill="#112240" stroke="#ff80ab" stroke-width="1" opacity="0.85"/>
+      <text x="20" y="30" font-family="monospace" font-size="14" fill="#ff80ab" font-weight="bold">🐉 DragonflyDB</text>
+      <text x="20" y="52" font-family="monospace" font-size="11" fill="#78909c">4.1M ops/sec · 22x Redis</text>
+    </g>
   </g>
-  <!-- Right side: Architecture diagram -->
-  <g transform="translate(640, 80)">
-    <rect width="560" height="480" rx="12" fill="#112240" stroke="#1eb854" stroke-width="1" opacity="0.8"/>
-    <text x="280" y="40" font-family="monospace" font-size="16" fill="#64ffda" text-anchor="middle">▸ ARCHITECTURE</text>
-    <!-- Frontend -->
-    <rect x="40" y="70" width="480" height="60" rx="6" fill="#0a1628" stroke="#64ffda" stroke-width="1" opacity="0.9"/>
-    <text x="280" y="100" font-family="system-ui, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" font-weight="bold">SolidJS Frontend</text>
-    <text x="280" y="118" font-family="monospace" font-size="11" fill="#8892b0" text-anchor="middle">~7KB gzip · No VDOM · Fine-grained reactivity</text>
-    <!-- Arrow -->
-    <polygon points="280,130 270,145 290,145" fill="#1eb854"/>
-    <line x1="280" y1="130" x2="280" y2="145" stroke="#1eb854" stroke-width="2"/>
-    <!-- API -->
-    <rect x="40" y="150" width="480" height="60" rx="6" fill="#0a1628" stroke="#64ffda" stroke-width="1" opacity="0.9"/>
-    <text x="280" y="180" font-family="system-ui, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" font-weight="bold">Axum API Server (Rust)</text>
-    <text x="280" y="198" font-family="monospace" font-size="11" fill="#8892b0" text-anchor="middle">0.9ms p50 · 24,600 req/s · ~3MB idle</text>
-    <!-- Arrow -->
-    <polygon points="280,210 270,225 290,225" fill="#1eb854"/>
-    <line x1="280" y1="210" x2="280" y2="225" stroke="#1eb854" stroke-width="2"/>
-    <!-- Bottom row: 4 blocks -->
-    <rect x="40" y="235" width="110" height="60" rx="6" fill="#0a1628" stroke="#1eb854" stroke-width="1" opacity="0.9"/>
-    <text x="95" y="262" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">GGUF</text>
-    <text x="95" y="280" font-family="monospace" font-size="10" fill="#8892b0" text-anchor="middle">CPU inference</text>
-    <rect x="165" y="235" width="110" height="60" rx="6" fill="#0a1628" stroke="#1eb854" stroke-width="1" opacity="0.9"/>
-    <text x="220" y="262" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Qdrant</text>
-    <text x="220" y="280" font-family="monospace" font-size="10" fill="#8892b0" text-anchor="middle">&lt;5ms @ 10M vecs</text>
-    <rect x="290" y="235" width="110" height="60" rx="6" fill="#0a1628" stroke="#1eb854" stroke-width="1" opacity="0.9"/>
-    <text x="345" y="262" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">DragonflyDB</text>
-    <text x="345" y="280" font-family="monospace" font-size="10" fill="#8892b0" text-anchor="middle">4.1M ops/sec</text>
-    <rect x="415" y="235" width="105" height="60" rx="6" fill="#0a1628" stroke="#1eb854" stroke-width="1" opacity="0.9"/>
-    <text x="467" y="262" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">PostgreSQL</text>
-    <text x="467" y="280" font-family="monospace" font-size="10" fill="#8892b0" text-anchor="middle">ACID + pgvector</text>
-    <!-- Model training section -->
-    <rect x="40" y="315" width="480" height="50" rx="6" fill="#1eb854" opacity="0.1" stroke="#1eb854" stroke-width="1" stroke-dasharray="4,2"/>
-    <text x="280" y="340" font-family="system-ui, sans-serif" font-size="16" fill="#1eb854" text-anchor="middle" font-weight="bold">▸ TRAINING: PyTorch · BF16 · AdamW · Cosine LR · 26 layers</text>
-    <!-- Bottom info -->
-    <text x="280" y="390" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">🇵🇰 Built for Pakistan · CPU-first · Citation-safe · Domain-expert</text>
-    <!-- Feature badges -->
-    <g transform="translate(80, 420)">
-      <rect width="90" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
-      <text x="45" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">Urdu + English</text>
-    </g>
-    <g transform="translate(190, 420)">
-      <rect width="80" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
-      <text x="40" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">Open Source</text>
-    </g>
-    <g transform="translate(290, 420)">
-      <rect width="80" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
-      <text x="40" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">Tauri Desktop</text>
-    </g>
-    <g transform="translate(390, 420)">
-      <rect width="70" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
-      <text x="35" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">MIT</text>
-    </g>
-    <g transform="translate(480, 420)">
-      <rect width="80" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
-      <text x="40" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">PRs Welcome</text>
-    </g>
+
+  <!-- Bottom right: repo link -->
+  <g transform="translate(780, 470)">
+    <text font-family="monospace" font-size="14" fill="#00e5ff" opacity="0.8" filter="url(#glow)">github.com/6t9xstar/MAR-1.0</text>
+  </g>
+
+  <!-- Decorative corner accents -->
+  <g opacity="0.15" stroke="#64ffda" fill="none" stroke-width="1">
+    <!-- Top-right corner -->
+    <polyline points="1240,10 1270,10 1270,40"/>
+    <polyline points="1200,10 1270,10 1270,80"/>
+    <!-- Bottom-left corner -->
+    <polyline points="10,600 10,630 40,630"/>
+    <polyline points="10,560 10,630 80,630"/>
+    <!-- Top-left corner -->
+    <polyline points="10,10 10,40 40,10"/>
+    <polyline points="10,10 10,80 80,10"/>
+    <!-- Bottom-right corner -->
+    <polyline points="1240,630 1270,630 1270,600"/>
+    <polyline points="1200,630 1270,630 1270,560"/>
+  </g>
+
+  <!-- Diagonal accent lines -->
+  <g opacity="0.04" stroke="#64ffda" stroke-width="1">
+    <line x1="0" y1="0" x2="640" y2="640"/>
+    <line x1="640" y1="0" x2="1280" y2="640"/>
+    <line x1="320" y1="0" x2="0" y2="320"/>
+    <line x1="960" y1="0" x2="1280" y2="320"/>
+  </g>
+
+  <!-- Data flow arrows (animated feel) -->
+  <g opacity="0.12" stroke="#64ffda" fill="none" stroke-width="1" stroke-dasharray="8,4">
+    <path d="M 580,200 Q 700,180 780,120"/>
+    <path d="M 580,400 Q 700,420 780,380"/>
+    <path d="M 580,300 Q 700,300 780,300"/>
   </g>
 </svg>
