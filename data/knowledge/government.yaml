@@ -1,0 +1,23 @@
+domain: government
+version: \"1.0.0\"
+requires_disclaimer: false
+sources: []
+skills:
+  - id: govt-structure
+    name: \"Government Structure\"
+    activation_keywords: [\"government\", \"ministry\", \"prime minister\", \"president\", \"parliament\", \"?????\"]
+    chunks:
+      - id: structure
+        content: |
+          Pakistan is a federal parliamentary democratic republic. President (head of state), Prime Minister (head of government). Parliament: National Assembly (336 seats) + Senate (96 seats). Four provinces: Punjab, Sindh, KPK, Balochistan with Chief Ministers and Governors. Islamabad Capital Territory. Gilgit-Baltistan and AJK have semi-autonomous status.
+        citations: []
+        tags: [\"government\", \"federal\", \"parliament\", \"prime minister\"]
+  - id: citizen-portals
+    name: \"Citizen Portals\"
+    activation_keywords: [\"portal\", \"nadra\", \"online service\", \"fbr\", \"?????\"]
+    chunks:
+      - id: portals
+        content: |
+          Key citizen portals: NADRA e-Sahulat (ID cards), FBR Iris (tax filing), SECP e-Services (company registration), Pakistan Citizen Portal (PM complaint cell), Punjab Police Khidmat Markaz, Passport & Immigration (online appointments), Land Records: PLRA ARAZI portal (Punjab), Zameen portal (Sindh).
+        citations: []
+        tags: [\"citizen\", \"portal\", \"online service\", \"nadra\"]

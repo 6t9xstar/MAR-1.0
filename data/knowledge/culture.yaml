@@ -1,0 +1,32 @@
+domain: culture
+version: \"1.0.0\"
+requires_disclaimer: false
+sources: []
+skills:
+  - id: culture-languages
+    name: \"Languages\"
+    activation_keywords: [\"language\", \"urdu\", \"punjabi\", \"pashto\", \"sindhi\", \"balochi\", \"saraiki\", \"????\"]
+    chunks:
+      - id: languages
+        content: |
+          Official languages: Urdu (national), English (official/business). Provincial languages: Punjabi (40%), Pashto (18%), Sindhi (14%), Saraiki (12%), Balochi (4%). Over 70 languages spoken total. Urdu serves as lingua franca understood throughout the country.
+        citations: []
+        tags: [\"languages\", \"urdu\", \"punjabi\", \"pashto\"]
+  - id: culture-festivals
+    name: \"Festivals\"
+    activation_keywords: [\"eid\", \"festival\", \"celebration\", \"?????\", \"???\"]
+    chunks:
+      - id: festivals
+        content: |
+          Religious: Eid al-Fitr (end of Ramadan), Eid al-Adha (sacrifice), Eid Milad-un-Nabi (Prophet's birthday), Shab-e-Barat, Shab-e-Qadr. National: Independence Day (Aug 14), Defence Day (Sep 6), Pakistan Day (Mar 23), Quaid-e-Azam Day (Dec 25). Cultural: Basant (spring, Punjab), Sibi Festival (Balochistan), Sindh Cultural Day.
+        citations: []
+        tags: [\"festivals\", \"eid\", \"cultural\"]
+  - id: culture-sports
+    name: \"Sports\"
+    activation_keywords: [\"cricket\", \"hockey\", \"squash\", \"sport\", \"player\", \"????\", \"????\"]
+    chunks:
+      - id: sports
+        content: |
+          Cricket is most popular (World Cup 1992, Champions Trophy 2017, T20 World Cup 2009 winners). Hockey is national sport (most Olympic medals). Squash legends: Jahangir Khan, Jansher Khan. Other: Kabaddi, Polo (north), Wrestling, Football (growing). Imran Khan (cricketer turned PM) is a national icon.
+        citations: []
+        tags: [\"cricket\", \"hockey\", \"sports\"]

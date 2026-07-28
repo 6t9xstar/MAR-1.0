@@ -1,0 +1,49 @@
+﻿[package]
+name = "inference"
+version = "1.0.0"
+edition = "2024"
+description = "MAR 1.0 LLM inference engine - llama.cpp GGUF backend for CPU"
+
+[lib]
+name = "inference"
+path = "src/lib.rs"
+
+[[bin]]
+name = "inference-server"
+path = "src/main.rs"
+
+[dependencies]
+# llama.cpp GGUF inference (CPU-optimized)
+llama-cpp-2 = "0.1"
+
+# Async HTTP server
+axum = { version = "0.8", features = ["macros", "json"] }
+tokio = { version = "1", features = ["full", "signal"] }
+tokio-stream = "0.1"
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+futures = "0.3"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Observability
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Parsing
+chrono = "0.4"
+uuid = { version = "1", features = ["v7"] }
+
+# Errors
+eyre = "0.6"
+thiserror = "2"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["async_futures"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = "symbols"

@@ -1,0 +1,19 @@
+﻿[package]
+name = "data-pipeline"
+version = "1.0.0"
+edition = "2024"
+description = "MAR 1.0 knowledge ingestion CLI tool"
+
+[[bin]]
+name = "data-pipeline"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+eyre = "0.6"
+clap = { version = "4", features = ["derive"] }
+glob = "0.3"

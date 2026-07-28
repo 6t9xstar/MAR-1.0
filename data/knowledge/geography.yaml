@@ -1,0 +1,27 @@
+domain: geography
+version: \"1.0.0\"
+requires_disclaimer: false
+sources:
+  - name: \"Pakistan Bureau of Statistics\"
+    url: \"https://www.pbs.gov.pk\"
+    authority: \"Government of Pakistan\"
+    confidence: 0.95
+skills:
+  - id: geo-provinces
+    name: \"Provinces and Territories\"
+    activation_keywords: [\"province\", \"punjab\", \"sindh\", \"kpk\", \"balochistan\", \"gilgit\", \"????\"]
+    chunks:
+      - id: provinces
+        content: |
+          Four provinces: Punjab (capital Lahore, pop ~110M, agricultural heartland), Sindh (Karachi, pop ~48M, industrial/commercial hub), Khyber Pakhtunkhwa (Peshawar, pop ~36M, mountainous), Balochistan (Quetta, pop ~12M, largest area). Territories: Islamabad Capital Territory, Gilgit-Baltistan, Azad Jammu & Kashmir. Total area: 881,913 km2. Pop: ~240M (5th in world).
+        citations: []
+        tags: [\"provinces\", \"territories\", \"population\"]
+  - id: geo-features
+    name: \"Geographic Features\"
+    activation_keywords: [\"mountain\", \"river\", \"desert\", \"sea\", \"coast\", \"valley\", \"????\", \"????\"]
+    chunks:
+      - id: features
+        content: |
+          Indus River (longest, 3,180 km). K2 (8,611m, world's 2nd highest). Nanga Parbat (8,126m). Karakoram Highway. Thar Desert (200,000 km2). Arabian Sea coastline (1,046 km). Deosai Plains (2nd highest plateau). Hunza, Swat, Naran-Kaghan valleys. Climate varies: north alpine, Punjab extreme (45C summer), Sindh humid, Balochistan arid.
+        citations: []
+        tags: [\"mountains\", \"rivers\", \"deserts\", \"coast\"]

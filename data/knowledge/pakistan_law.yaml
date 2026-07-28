@@ -1,0 +1,35 @@
+domain: law
+version: \"1.0.0\"
+requires_disclaimer: true
+sources:
+  - name: \"Constitution of Pakistan 1973\"
+    url: \"https://na.gov.pk/en/constitution.php\"
+    authority: \"National Assembly of Pakistan\"
+    confidence: 0.99
+  - name: \"Pakistan Penal Code 1860\"
+    url: \"https://www.pakistani.org/pakistan/legislation/1860/actXLVof1860.html\"
+    authority: \"Pakistan Legislature\"
+    confidence: 0.99
+skills:
+  - id: law-constitution
+    name: \"Constitutional Law\"
+    activation_keywords: [\"constitution\", \"fundamental rights\", \"????\", \"article\"]
+    chunks:
+      - id: const-overview
+        content: |
+          The Constitution of Pakistan 1973 is the supreme law of the land. It establishes Pakistan as a federal parliamentary democratic republic with Islam as the state religion. Key articles cover Fundamental Rights (8-28), Principles of Policy (29-40), Federal Government (41-100), Provincial Governments (101-140), and the Judiciary (175-212). The 18th Amendment (2010) devolved major subjects to provinces.
+        citations:
+          - source: \"Constitution of Pakistan 1973\"
+            text: \"Preamble and Fundamental Rights\"
+        tags: [\"constitution\", \"fundamental rights\", \"federal\"]
+  - id: law-family
+    name: \"Family Law\"
+    activation_keywords: [\"family law\", \"divorce\", \"nikah\", \"custody\", \"inheritance\", \"???????\"]
+    chunks:
+      - id: family-overview
+        content: |
+          Family law in Pakistan is governed primarily by the Muslim Family Laws Ordinance 1961 for Muslims. Key areas: Nikah registration (mandatory, with NADRA), divorce (talaq procedures, mandatory arbitration), maintenance (nafaqa), child custody (hizanat - mother gets custody of young children), and inheritance (Islamic shares-based distribution). Special courts handle family cases.
+        citations:
+          - source: \"Muslim Family Laws Ordinance 1961\"
+            text: \"Marriage, divorce, and maintenance provisions\"
+        tags: [\"family\", \"marriage\", \"divorce\", \"nikah\"]

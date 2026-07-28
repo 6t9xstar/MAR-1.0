@@ -1,0 +1,29 @@
+domain: agriculture
+version: \"1.0.0\"
+requires_disclaimer: false
+sources:
+  - name: \"Ministry of National Food Security & Research\"
+    url: \"https://www.mnfsr.gov.pk\"
+    authority: \"Government of Pakistan\"
+    confidence: 0.9
+skills:
+  - id: agri-crops
+    name: \"Crops and Seasons\"
+    activation_keywords: [\"kharif\", \"rabi\", \"wheat\", \"rice\", \"cotton\", \"sugarcane\", \"maize\", \"???\", \"????\", \"????\"]
+    chunks:
+      - id: crop-seasons
+        content: |
+          Pakistan has two main crop seasons: Kharif (April-October): rice, sugarcane, cotton, maize. Rabi (October-April): wheat, barley, gram, mustard, potatoes. Pakistan is among top 10 producers of wheat, rice, sugarcane, and cotton globally. Punjab is the breadbasket (60%+ of food production), Sindh is major for rice and sugarcane.
+        citations: []
+        tags: [\"crops\", \"kharif\", \"rabi\", \"seasons\"]
+  - id: agri-schemes
+    name: \"Government Schemes\"
+    activation_keywords: [\"kissan card\", \"subsidy\", \"fertilizer\", \"crop insurance\", \"agriculture loan\", \"????\"]
+    chunks:
+      - id: govt-schemes
+        content: |
+          Key agricultural schemes: Kissan Card (digital subsidy for inputs), PM Crop Insurance (risk coverage for major crops), Agriculture Credit (subsidized loans via ZTBL and banks), Solar Tube Well scheme, Green Pakistan Initiative. Punjab and Sindh have additional provincial programs for seed distribution and farm mechanization.
+        citations:
+          - source: \"Ministry of Agriculture\"
+            text: \"Kissan Card and subsidy programs\"
+        tags: [\"kissan card\", \"subsidy\", \"schemes\"]

@@ -1,0 +1,12 @@
+checkpoints/
+logs/
+data/
+*.gguf
+*.bin
+*.idx
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.DS_Store
+wandb/

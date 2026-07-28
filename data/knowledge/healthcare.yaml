@@ -1,0 +1,29 @@
+domain: healthcare
+version: \"1.0.0\"
+requires_disclaimer: true
+sources:
+  - name: \"Ministry of National Health Services\"
+    url: \"https://www.nhsrc.gov.pk\"
+    authority: \"Government of Pakistan\"
+    confidence: 0.85
+skills:
+  - id: health-emergency
+    name: \"Emergency Services\"
+    activation_keywords: [\"emergency\", \"ambulance\", \"rescue\", \"hospital emergency\", \"1122\", \"????????\"]
+    chunks:
+      - id: emergency-numbers
+        content: |
+          Emergency numbers: Rescue 1122 (ambulance, fire, rescue - Punjab, KPK), 15 (police), 115 (Edhi ambulance nationwide), 16 (fire), Sehat Tahaffuz 1166 (health helpline). Major hospital emergency departments are open 24/7.
+        citations: []
+        tags: [\"emergency\", \"ambulance\", \"rescue\"]
+  - id: health-diseases
+    name: \"Common Diseases\"
+    activation_keywords: [\"dengue\", \"hepatitis\", \"malaria\", \"typhoid\", \"tuberculosis\", \"diabetes\", \"??????\"]
+    chunks:
+      - id: disease-info
+        content: |
+          Common diseases: Hepatitis B/C (5-10% prevalence), Dengue (seasonal post-monsoon), Malaria (rural areas), Typhoid (including XDR strain), TB (5th highest burden), Diabetes (over 30M affected - 5th in world), Cardiovascular disease (leading cause of death). Prevention: vaccination, mosquito control, clean water, hygiene.
+        citations:
+          - source: \"WHO Pakistan\"
+            text: \"Disease burden statistics\"
+        tags: [\"diseases\", \"hepatitis\", \"dengue\", \"diabetes\"]

@@ -1,0 +1,35 @@
+domain: business
+version: \"1.0.0\"
+requires_disclaimer: true
+sources:
+  - name: \"SECP\"
+    url: \"https://www.secp.gov.pk\"
+    authority: \"Government of Pakistan\"
+    confidence: 0.95
+  - name: \"FBR\"
+    url: \"https://www.fbr.gov.pk\"
+    authority: \"Government of Pakistan\"
+    confidence: 0.95
+skills:
+  - id: biz-registration
+    name: \"Business Registration\"
+    activation_keywords: [\"company registration\", \"secp\", \"sole proprietorship\", \"partnership\", \"private limited\", \"????????\"]
+    chunks:
+      - id: registration-types
+        content: |
+          Business registration in Pakistan through SECP: Sole Proprietorship (simplest, individual owner), Partnership (2-20 partners under Partnership Act 1932), Private Limited Company (2-50 members, limited liability), Public Limited Company (can list on PSX), Single Member Company (one person company). Section 42 for non-profits. All registration done online via SECP e-Services portal.
+        citations:
+          - source: \"Companies Act 2017\"
+            text: \"Company types and registration\"
+        tags: [\"registration\", \"secp\", \"company types\"]
+  - id: biz-tax
+    name: \"Taxation\"
+    activation_keywords: [\"tax\", \"fbr\", \"ntn\", \"sales tax\", \"income tax\", \"????\"]
+    chunks:
+      - id: tax-basics
+        content: |
+          Tax system in Pakistan: FBR administers Income Tax (individual slab 0-35%, company 29%), Sales Tax (standard 18%), Federal Excise Duty, and Customs Duty. Every taxpayer needs NTN (National Tax Number). Sales Tax registration mandatory if annual turnover exceeds PKR 10M. Filing is annual for income tax, monthly for sales tax. WHT deducted at source on many transactions.
+        citations:
+          - source: \"FBR Pakistan\"
+            text: \"Tax rates and registration requirements\"
+        tags: [\"tax\", \"fbr\", \"ntn\", \"sales tax\"]

@@ -1,0 +1,49 @@
+﻿# Rust
+target/
+src-tauri/target/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+uploads/
+
+# Logs
+*.log
+*.err
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# ML artifacts
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+wandb/
+
+# Coverage
+coverage/
+lcov.info

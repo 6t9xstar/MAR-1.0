@@ -1,0 +1,25 @@
+﻿cff-version: 1.2.0
+message: "If you use MAR 1.0 in your research, please cite it as below."
+title: "MAR 1.0: Open-Source Urdu-English Bilingual Foundation Model"
+authors:
+  - family-names: "Awan"
+    given-names: "Malik Taimoor"
+    website: "https://github.com/your-org"
+    alias: "yours._malik"
+version: 1.0.0-alpha
+date-released: 2026-07-29
+url: "https://github.com/your-org/MAR-1.0"
+license: "MIT"
+type: software
+repository-code: "https://github.com/your-org/MAR-1.0"
+abstract: "MAR 1.0 is an open-source Urdu-English bilingual foundation model
+  and full-stack AI assistant platform built with Rust, featuring custom
+  training pipelines, GGUF inference, and Pakistan-domain expertise."
+keywords:
+  - "large language model"
+  - "Urdu NLP"
+  - "bilingual AI"
+  - "Pakistan AI"
+  - "Rust"
+  - "PyTorch"
+  - "llama.cpp"

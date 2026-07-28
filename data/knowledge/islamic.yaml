@@ -1,0 +1,35 @@
+domain: islamic
+version: \"1.0.0\"
+requires_disclaimer: true
+sources:
+  - name: \"The Noble Quran\"
+    url: \"https://quran.com\"
+    authority: \"Revealed scripture\"
+    confidence: 1.0
+  - name: \"Sahih al-Bukhari\"
+    url: \"https://sunnah.com/bukhari\"
+    authority: \"Imam Bukhari\"
+    confidence: 0.98
+skills:
+  - id: islamic-prayer
+    name: \"Prayer (Salah)\"
+    activation_keywords: [\"salah\", \"namaz\", \"fajr\", \"zuhr\", \"asr\", \"maghrib\", \"isha\", \"prayer\", \"????\"]
+    chunks:
+      - id: prayer-times
+        content: |
+          Five daily prayers: Fajr (2 rak'ah, dawn), Zuhr (4 rak'ah, noon), Asr (4 rak'ah, afternoon), Maghrib (3 rak'ah, sunset), Isha (4 rak'ah, night). Jumu'ah (Friday) replaces Zuhr with sermon + 2 rak'ah. Qibla direction approx 255° in Pakistan (west-southwest). Tahajjud (night prayer) highly recommended.
+        citations:
+          - source: \"Sahih Bukhari\"
+            text: \"Book of Prayer times\"
+        tags: [\"prayer\", \"salah\", \"namaz\"]
+  - id: islamic-zakat
+    name: \"Zakat\"
+    activation_keywords: [\"zakat\", \"charity\", \"?????\", \"????\"]
+    chunks:
+      - id: zakat-rules
+        content: |
+          Zakat: 2.5% of wealth above nisab (value of 87.48g gold). Due on gold, silver, cash, stock, business inventory. Agricultural produce: 5% (irrigated) or 10% (rain-fed). Payable to eight categories (Surah Tawbah 9:60): poor, needy, zakat collectors, reconciled hearts, captives, debtors, Allah's cause, wayfarers.
+        citations:
+          - source: \"Surah At-Tawbah 9:60\"
+            text: \"Zakat recipients\"
+        tags: [\"zakat\", \"charity\", \"wealth\"]

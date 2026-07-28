@@ -1,0 +1,24 @@
+FROM rust:1.82-slim-bookworm AS chef
+RUN cargo install cargo-chef
+WORKDIR /app
+
+FROM chef AS planner
+COPY Cargo.toml Cargo.lock ./
+COPY api-server/Cargo.toml api-server/
+COPY inference/Cargo.toml inference/
+COPY src-tauri/Cargo.toml src-tauri/
+RUN cargo chef prepare --recipe-path recipe.json
+
+FROM chef AS builder
+COPY --from=planner /app/recipe.json recipe.json
+RUN cargo chef cook --release --recipe-path recipe.json
+COPY . .
+RUN cargo build -p inference --release --features cuda
+
+FROM nvidia/cuda:12.4-runtime-ubuntu22.04 AS runtime
+RUN apt-get update && apt-get install -y \
+    ca-certificates tzdata libssl3 \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=builder /app/target/release/inference-server /usr/local/bin/
+EXPOSE 8081
+CMD ["inference-server"]

@@ -1,0 +1,29 @@
+domain: education
+version: \"1.0.0\"
+requires_disclaimer: false
+sources:
+  - name: \"Higher Education Commission Pakistan\"
+    url: \"https://www.hec.gov.pk\"
+    authority: \"Government of Pakistan\"
+    confidence: 0.95
+skills:
+  - id: edu-system
+    name: \"Education System\"
+    activation_keywords: [\"matric\", \"intermediate\", \"fsc\", \"ba\", \"bsc\", \"bs\", \"ma\", \"msc\", \"phd\", \"?????\"]
+    chunks:
+      - id: edu-levels
+        content: |
+          Pakistan education levels: Primary (1-5), Middle (6-8), Matric/SSC (9-10), Intermediate/HSSC (11-12), Bachelor's (2-4 years depending on program), Master's (1-2 years), PhD (3-5 years). The main examination boards are FBISE and provincial BISEs. After 18th Amendment, education is primarily a provincial subject.
+        citations: []
+        tags: [\"levels\", \"matric\", \"intermediate\", \"bachelor\"]
+  - id: uni-admissions
+    name: \"University Admissions\"
+    activation_keywords: [\"admission\", \"university\", \"entry test\", \"net\", \"ecat\", \"mdcat\", \"?????\"]
+    chunks:
+      - id: admission-process
+        content: |
+          University admissions in Pakistan: Most universities require entry tests. NUST uses NET (NUST Entry Test), engineering universities use ECAT, medical uses MDCAT. HEC sets minimum eligibility criteria. Application is usually online through university portals or central systems. Scholarships available through HEC, PM Laptop Scheme, and university merit-based awards.
+        citations:
+          - source: \"HEC Pakistan\"
+            text: \"Admission policies and entry tests\"
+        tags: [\"admission\", \"entry test\", \"university\", \"hec\"]
