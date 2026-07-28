@@ -11,7 +11,7 @@
 ---
 
 <p align="center">
-  <img src="assets/mar-banner.svg" alt="MAR 1.0" width="100%">
+  <img src="assets/MAR.png" alt="MAR 1.0" width="100%">
 </p>
 
 ## Overview
