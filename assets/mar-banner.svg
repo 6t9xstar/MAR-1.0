@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#0a1628"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1eb854"/>
+      <stop offset="100%" style="stop-color:#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <!-- Grid lines -->
+  <g opacity="0.05" stroke="#64ffda" stroke-width="0.5">
+    <line x1="0" y1="160" x2="1280" y2="160"/>
+    <line x1="0" y1="320" x2="1280" y2="320"/>
+    <line x1="0" y1="480" x2="1280" y2="480"/>
+    <line x1="320" y1="0" x2="320" y2="640"/>
+    <line x1="640" y1="0" x2="640" y2="640"/>
+    <line x1="960" y1="0" x2="960" y2="640"/>
+  </g>
+  <!-- Pakistan flag crescent (abstract) -->
+  <circle cx="120" cy="100" r="60" fill="none" stroke="#1eb854" stroke-width="2" opacity="0.3"/>
+  <circle cx="130" cy="90" r="40" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.2"/>
+  <!-- Title -->
+  <text x="80" y="200" font-family="system-ui, sans-serif" font-size="96" font-weight="900" fill="#ffffff">MAR</text>
+  <text x="80" y="260" font-family="system-ui, sans-serif" font-size="48" font-weight="500" fill="url(#accent)">1.0</text>
+  <!-- Tagline -->
+  <text x="80" y="310" font-family="system-ui, sans-serif" font-size="20" fill="#8892b0">
+    <tspan>Urdu-English Bilingual Foundation Model</tspan>
+  </text>
+  <!-- Badge row -->
+  <g transform="translate(80, 360)">
+    <rect width="120" height="28" rx="4" fill="#1eb854" opacity="0.9"/>
+    <text x="60" y="18" font-family="monospace" font-size="11" fill="#ffffff" text-anchor="middle">347M - 8B</text>
+  </g>
+  <g transform="translate(220, 360)">
+    <rect width="100" height="28" rx="4" fill="#64ffda" opacity="0.2"/>
+    <text x="50" y="18" font-family="monospace" font-size="11" fill="#64ffda" text-anchor="middle">GQA</text>
+  </g>
+  <g transform="translate(340, 360)">
+    <rect width="100" height="28" rx="4" fill="#64ffda" opacity="0.2"/>
+    <text x="50" y="18" font-family="monospace" font-size="11" fill="#64ffda" text-anchor="middle">SwiGLU</text>
+  </g>
+  <g transform="translate(460, 360)">
+    <rect width="100" height="28" rx="4" fill="#64ffda" opacity="0.2"/>
+    <text x="50" y="18" font-family="monospace" font-size="11" fill="#64ffda" text-anchor="middle">RoPE</text>
+  </g>
+  <!-- Right side: Architecture diagram -->
+  <g transform="translate(640, 80)">
+    <rect width="560" height="480" rx="12" fill="#112240" stroke="#1eb854" stroke-width="1" opacity="0.8"/>
+    <text x="280" y="40" font-family="monospace" font-size="16" fill="#64ffda" text-anchor="middle">▸ ARCHITECTURE</text>
+    <!-- Frontend -->
+    <rect x="40" y="70" width="480" height="60" rx="6" fill="#0a1628" stroke="#64ffda" stroke-width="1" opacity="0.9"/>
+    <text x="280" y="100" font-family="system-ui, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" font-weight="bold">SolidJS Frontend</text>
+    <text x="280" y="118" font-family="monospace" font-size="11" fill="#8892b0" text-anchor="middle">~7KB gzip · No VDOM · Fine-grained reactivity</text>
+    <!-- Arrow -->
+    <polygon points="280,130 270,145 290,145" fill="#1eb854"/>
+    <line x1="280" y1="130" x2="280" y2="145" stroke="#1eb854" stroke-width="2"/>
+    <!-- API -->
+    <rect x="40" y="150" width="480" height="60" rx="6" fill="#0a1628" stroke="#64ffda" stroke-width="1" opacity="0.9"/>
+    <text x="280" y="180" font-family="system-ui, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" font-weight="bold">Axum API Server (Rust)</text>
+    <text x="280" y="198" font-family="monospace" font-size="11" fill="#8892b0" text-anchor="middle">0.9ms p50 · 24,600 req/s · ~3MB idle</text>
+    <!-- Arrow -->
+    <polygon points="280,210 270,225 290,225" fill="#1eb854"/>
+    <line x1="280" y1="210" x2="280" y2="225" stroke="#1eb854" stroke-width="2"/>
+    <!-- Bottom row: 4 blocks -->
+    <rect x="40" y="235" width="110" height="60" rx="6" fill="#0a1628" stroke="#1eb854" stroke-width="1" opacity="0.9"/>
+    <text x="95" y="262" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">GGUF</text>
+    <text x="95" y="280" font-family="monospace" font-size="10" fill="#8892b0" text-anchor="middle">CPU inference</text>
+    <rect x="165" y="235" width="110" height="60" rx="6" fill="#0a1628" stroke="#1eb854" stroke-width="1" opacity="0.9"/>
+    <text x="220" y="262" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Qdrant</text>
+    <text x="220" y="280" font-family="monospace" font-size="10" fill="#8892b0" text-anchor="middle">&lt;5ms @ 10M vecs</text>
+    <rect x="290" y="235" width="110" height="60" rx="6" fill="#0a1628" stroke="#1eb854" stroke-width="1" opacity="0.9"/>
+    <text x="345" y="262" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">DragonflyDB</text>
+    <text x="345" y="280" font-family="monospace" font-size="10" fill="#8892b0" text-anchor="middle">4.1M ops/sec</text>
+    <rect x="415" y="235" width="105" height="60" rx="6" fill="#0a1628" stroke="#1eb854" stroke-width="1" opacity="0.9"/>
+    <text x="467" y="262" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">PostgreSQL</text>
+    <text x="467" y="280" font-family="monospace" font-size="10" fill="#8892b0" text-anchor="middle">ACID + pgvector</text>
+    <!-- Model training section -->
+    <rect x="40" y="315" width="480" height="50" rx="6" fill="#1eb854" opacity="0.1" stroke="#1eb854" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="280" y="340" font-family="system-ui, sans-serif" font-size="16" fill="#1eb854" text-anchor="middle" font-weight="bold">▸ TRAINING: PyTorch · BF16 · AdamW · Cosine LR · 26 layers</text>
+    <!-- Bottom info -->
+    <text x="280" y="390" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">🇵🇰 Built for Pakistan · CPU-first · Citation-safe · Domain-expert</text>
+    <!-- Feature badges -->
+    <g transform="translate(80, 420)">
+      <rect width="90" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
+      <text x="45" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">Urdu + English</text>
+    </g>
+    <g transform="translate(190, 420)">
+      <rect width="80" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
+      <text x="40" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">Open Source</text>
+    </g>
+    <g transform="translate(290, 420)">
+      <rect width="80" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
+      <text x="40" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">Tauri Desktop</text>
+    </g>
+    <g transform="translate(390, 420)">
+      <rect width="70" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
+      <text x="35" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">MIT</text>
+    </g>
+    <g transform="translate(480, 420)">
+      <rect width="80" height="22" rx="3" fill="#64ffda" opacity="0.15"/>
+      <text x="40" y="15" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">PRs Welcome</text>
+    </g>
+  </g>
+</svg>

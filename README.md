@@ -3,12 +3,16 @@
 **The fastest, most helpful AI assistant built for Pakistan — open-source, bilingual (Urdu/English), and CPU-friendly.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Rust](https://img.shields.io/badge/Rust-1.81+-orange.svg)](https://www.rust-lang.org)
+[![Rust](https://img.shields.io/badge/Rust-1.97+-orange.svg)](https://www.rust-lang.org)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![SolidJS](https://img.shields.io/badge/SolidJS-1.9-blue.svg)](https://solidjs.com)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 ---
+
+<p align="center">
+  <img src="assets/mar-banner.svg" alt="MAR 1.0" width="100%">
+</p>
 
 ## Overview
 
@@ -51,7 +55,7 @@ MAR 1.0 is both a **foundation model architecture** and a **full-stack AI assist
 ### 1. Clone and setup
 
 ```bash
-git clone https://github.com/your-org/MAR-1.0.git
+git clone https://github.com/6t9xstar/MAR-1.0.git
 cd MAR-1.0
 cp .env.example .env
 ```
