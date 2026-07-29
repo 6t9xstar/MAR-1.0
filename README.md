@@ -1,58 +1,162 @@
-﻿# MAR 1.0
+<div align="center">
 
-**The fastest, most helpful AI assistant built for Pakistan — open-source, bilingual (Urdu/English), and CPU-friendly.**
+<img src="assets/MAR.png" alt="MAR — Markhor AI" width="100%" />
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Rust](https://img.shields.io/badge/Rust-1.97+-orange.svg)](https://www.rust-lang.org)
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
-[![SolidJS](https://img.shields.io/badge/SolidJS-1.9-blue.svg)](https://solidjs.com)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+# MAR 1.0
+
+### Markhor AI — Bilingual Foundation Model & AI Platform
+
+**An open-source, CPU-friendly AI foundation model and full-stack assistant platform built from Pakistan.**
+
+Built for developers. Designed for efficient local inference.  
+Powered by **Rust · Python · SolidJS · Tauri · llama.cpp**
+
+<br>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-F5C542?style=for-the-badge)](LICENSE)
+[![Rust](https://img.shields.io/badge/Rust-1.81%2B-CE422B?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![SolidJS](https://img.shields.io/badge/SolidJS-1.9-2C4F7C?style=for-the-badge&logo=solid&logoColor=white)](https://www.solidjs.com/)
+[![Tauri](https://img.shields.io/badge/Tauri-2.x-24C8DB?style=for-the-badge&logo=tauri&logoColor=white)](https://tauri.app/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-2EA44F?style=for-the-badge)](CONTRIBUTING.md)
+
+</div>
 
 ---
 
-<p align="center">
-  <img src="assets/MAR.png" alt="MAR 1.0" width="100%">
-</p>
+## 🐐 What is MAR?
 
-## Overview
+**MAR** stands for **Markhor** — inspired by Pakistan's national animal.
 
-MAR 1.0 is both a **foundation model architecture** and a **full-stack AI assistant platform**:
+MAR 1.0 is an open-source project combining a **decoder-only transformer architecture**, **model-training pipeline**, **local inference engine**, **Rust API backend**, and **cross-platform desktop AI assistant** into one ecosystem.
 
-- **Model**: A 347M–8B parameter decoder-only transformer with GQA, SwiGLU, RoPE, RMSNorm
-- **Training**: PyTorch pipeline for pretraining, from scratch or continued from existing models
-- **Inference**: CPU-first via GGUF + llama.cpp (`llama-cpp-2` Rust crate) or Ollama sidecar
-- **Desktop**: Tauri 2.x desktop shell with SolidJS frontend (3-10MB binary, 30MB idle RAM)
-- **API**: Axum REST server with OpenAI-compatible chat endpoints
+The goal is straightforward:
 
-### Architecture
+> Build an efficient AI platform that can be trained, deployed, extended, and run locally without requiring massive infrastructure.
 
+MAR is being designed around three principles:
+
+**Open. Efficient. Developer-first.**
+
+---
+
+## ✨ Highlights
+
+| | Capability | Description |
+|---|---|---|
+| 🧠 | **Foundation Model** | Decoder-only transformer architecture scaling from ~347M toward multi-billion parameter configurations |
+| ⚡ | **CPU-First Inference** | GGUF-based local inference through llama.cpp |
+| 🦀 | **Rust Backend** | High-performance API and inference infrastructure |
+| 🖥️ | **Native Desktop** | Lightweight Tauri 2.x application with SolidJS |
+| 🔬 | **Trainable** | PyTorch pipeline for tokenizer training, pretraining and experimentation |
+| 🔌 | **OpenAI-Compatible API** | Familiar chat-completions style API integration |
+| 🔎 | **RAG Ready** | Vector search, PostgreSQL, caching and full-text retrieval infrastructure |
+| 🌐 | **Open Source** | MIT licensed and built for community experimentation |
+
+---
+
+# 🧠 Model Architecture
+
+MAR uses a modern decoder-only Transformer architecture.
+
+```text
+Input Tokens
+     │
+     ▼
+┌──────────────────────┐
+│   Token Embeddings   │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│  Transformer Block   │ × N
+│                      │
+│  RMSNorm             │
+│      ↓               │
+│  GQA + RoPE          │
+│      ↓               │
+│  Residual             │
+│      ↓               │
+│  RMSNorm             │
+│      ↓               │
+│  SwiGLU FFN          │
+│      ↓               │
+│  Residual             │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│     Final RMSNorm    │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│       LM Head        │
+└──────────┬───────────┘
+           │
+           ▼
+       Next Token
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    SolidJS Frontend (Tauri)                   │
-│              Signals · No VDOM · Fine-grained reactivity     │
-├─────────────────────────────────────────────────────────────┤
-│                     Tauri Rust Shell                          │
-│                 OS native webview · ~5MB binary              │
-├─────────────────────────────────────────────────────────────┤
-│                    Axum API Server (Rust)                     │
-│             0.9ms p50 · 24,600 req/s · ~3MB idle            │
-├──────────┬──────────────────┬────────────────────────────────┤
-│ llama.cpp│  Qdrant Vector DB│  DragonflyDB Cache             │
-│ GGUF CPU │  (Rust, <5ms)    │  (22x Redis throughput)        │
-│ inference│  PostgreSQL+Vec   │  Meilisearch Search            │
-└──────────┴──────────────────┴────────────────────────────────┘
+
+### Core components
+
+- **GQA** — Grouped Query Attention
+- **RoPE** — Rotary Position Embeddings
+- **SwiGLU** — gated feed-forward network
+- **RMSNorm** — efficient normalization
+- **Causal Attention** — autoregressive generation
+- **BPE Tokenizer** — configurable vocabulary
+- **GGUF Export** — optimized local deployment
+
+---
+
+# 🏗️ Platform Architecture
+
+```text
+┌───────────────────────────────────────────────────────────────┐
+│                        MAR DESKTOP                            │
+│                                                               │
+│                  SolidJS + TypeScript                         │
+│             Fine-grained reactive interface                  │
+├───────────────────────────────────────────────────────────────┤
+│                        TAURI 2.x                              │
+│                                                               │
+│                  Native Rust Desktop Shell                    │
+├───────────────────────────────────────────────────────────────┤
+│                       AXUM API                                │
+│                                                               │
+│            REST API · Chat · Streaming · Health              │
+├─────────────────┬─────────────────┬───────────────────────────┤
+│                 │                 │                           │
+│    llama.cpp    │     Qdrant      │       Dragonfly          │
+│                 │                 │                           │
+│  GGUF Inference │  Vector Search  │         Cache             │
+│                 │                 │                           │
+├─────────────────┴─────────────────┴───────────────────────────┤
+│                                                               │
+│          PostgreSQL + pgvector · Meilisearch                 │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
 ```
 
-## Quick Start
+---
 
-### Prerequisites
+# 🚀 Quick Start
 
-- Rust 1.81+ (`rustup install 1.81.0`)
-- Node.js 20+ and npm
-- Python 3.10+ (for training)
-- Docker Desktop (for production infrastructure)
+## Prerequisites
 
-### 1. Clone and setup
+Make sure you have:
+
+- **Rust 1.81+**
+- **Node.js 20+**
+- **npm**
+- **Python 3.10+** for model training
+- **Docker Desktop** for infrastructure services
+- **Ollama** or a compatible GGUF runtime for local models
+
+---
+
+## 1. Clone MAR
 
 ```bash
 git clone https://github.com/6t9xstar/MAR-1.0.git
@@ -60,42 +164,95 @@ cd MAR-1.0
 cp .env.example .env
 ```
 
-### 2. Frontend
+---
+
+## 2. Start the frontend
 
 ```bash
 npm install
-npm run dev          # Vite dev server on :1420
+npm run dev
 ```
 
-### 3. Rust API server (with Ollama)
+Vite will start the development frontend on:
+
+```text
+http://localhost:1420
+```
+
+---
+
+## 3. Start MAR with Ollama
+
+Start a local model:
 
 ```bash
-# Terminal 1: Start Ollama with a model
 ollama pull llama3.1:8b
 ollama serve
+```
 
-# Terminal 2: Start the API server
+Then, in another terminal:
+
+```bash
 cargo run -p api-server
 ```
 
-The API server will be available at `http://localhost:8080` with OpenAPI docs at `/api/docs`.
+MAR's API will be available at:
 
-### 4. Desktop app
+```text
+http://localhost:8080
+```
+
+OpenAPI documentation:
+
+```text
+http://localhost:8080/api/docs
+```
+
+---
+
+## 4. Launch the desktop application
 
 ```bash
 npm run tauri:dev
 ```
 
-## Model Training (Phase 1A)
+This starts the full MAR desktop experience.
 
-### Setup Python environment
+---
+
+# 🔬 Training MAR
+
+MAR includes a PyTorch-based training pipeline for experimenting with and training decoder-only language models.
+
+## Create the environment
 
 ```bash
 cd training
+
+python -m venv .venv
+```
+
+### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+### Windows
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-### Train tokenizer
+---
+
+## Train the tokenizer
 
 ```bash
 python tokenizer/train_tokenizer.py \
@@ -103,7 +260,9 @@ python tokenizer/train_tokenizer.py \
     --vocab-size 32768
 ```
 
-### Prepare data
+---
+
+## Prepare training data
 
 ```bash
 python data/prepare_fineweb.py \
@@ -111,7 +270,9 @@ python data/prepare_fineweb.py \
     --sample-size 100000
 ```
 
-### Train 350M model
+---
+
+## Train MAR 350M
 
 ```bash
 python train.py \
@@ -120,79 +281,213 @@ python train.py \
     --tokenizer-path tokenizer/mar_32k
 ```
 
-### Export to GGUF
+---
+
+# 📦 GGUF Export
+
+Export the trained checkpoint:
 
 ```bash
 python convert_to_gguf.py \
     --model-path checkpoints/mar_350m/final
 ```
 
-Follow the printed instructions to convert with `llama.cpp` convert.py, then serve with the `inference` crate:
+After conversion, configure the model path for the inference service and run:
 
 ```bash
 cd ..
-# Set MODEL_PATH in inference/.env
 cargo run -p inference
 ```
 
-## Project Structure
+This enables MAR to serve quantized models through its Rust inference layer.
 
-```
+---
+
+# 📂 Repository Structure
+
+```text
 MAR-1.0/
-├── api-server/       # Rust Axum API server
-├── training/         # Python model training pipeline
-│   ├── model/        # Transformer architecture (MARConfig, MARForCausalLM)
-│   ├── tokenizer/    # BPE tokenizer trainer
-│   ├── configs/      # Model configuration YAMLs
-│   └── tests/        # Unit tests for model + tokenizer
-├── src/              # SolidJS frontend
-├── src-tauri/        # Tauri desktop shell (Rust)
-├── inference/        # llama.cpp GGUF inference server (Rust)
-├── data-pipeline/    # Knowledge ingestion pipeline (Rust)
-└── deploy/           # Dockerfiles + nginx config
+│
+├── api-server/          # Axum REST API
+│
+├── training/            # Model training system
+│   ├── model/           # MAR transformer architecture
+│   ├── tokenizer/       # BPE tokenizer
+│   ├── configs/         # Model configurations
+│   ├── data/            # Dataset preparation
+│   └── tests/           # Training/model tests
+│
+├── inference/           # GGUF / llama.cpp inference
+│
+├── data-pipeline/       # Knowledge ingestion & processing
+│
+├── src/                 # SolidJS frontend
+│
+├── src-tauri/           # Tauri desktop application
+│
+├── deploy/              # Deployment configuration
+│
+├── scripts/             # Development utilities
+│
+├── docker-compose.yml
+├── Cargo.toml
+├── package.json
+└── README.md
 ```
 
-## Tech Stack
+---
 
-| Layer | Technology | Performance |
-|-------|-----------|-------------|
-| Desktop | Tauri 2.x (Rust) | ~5MB binary, 30-60MB RAM |
-| Frontend | SolidJS 1.9 | ~7KB gzip, no VDOM |
-| API Server | Axum (Rust) | 0.9ms p50, 24,600 req/s |
-| Inference | llama.cpp GGUF (Rust) | CPU-first, 4-6 tok/s on 8B Q4 |
-| Vector DB | Qdrant (Rust) | <5ms p95 at 10M vectors |
-| Cache | DragonflyDB | 4.1M ops/sec |
-| Database | PostgreSQL + pgvector | ACID + vector search |
-| Full-text | Meilisearch (Rust) | <50ms on 10M docs |
+# 🛠️ Technology
 
-## Development
+| Layer | Technology |
+|---|---|
+| 🧠 Model | PyTorch |
+| 🔤 Tokenizer | BPE |
+| ⚡ Inference | llama.cpp + GGUF |
+| 🦀 Backend | Rust + Axum |
+| 🖥️ Desktop | Tauri 2.x |
+| 🎨 Frontend | SolidJS + TypeScript |
+| 🗄️ Database | PostgreSQL |
+| 🧬 Vector Search | pgvector + Qdrant |
+| ⚡ Cache | Dragonfly |
+| 🔎 Search | Meilisearch |
+| 📦 Infrastructure | Docker |
+
+---
+
+# 💻 Development
 
 ### Linux / macOS
 
+Start infrastructure:
+
 ```bash
-# Terminal 1: Infrastructure
 docker compose up -d postgres dragonfly qdrant meilisearch
+```
 
-# Terminal 2: API server
+Start the API:
+
+```bash
 cargo run -p api-server
+```
 
-# Terminal 3: Frontend
+Start the frontend:
+
+```bash
 npm run dev
 ```
 
 ### Windows
 
 ```powershell
-# Use the dev script
 .\scripts\dev.ps1 -All
 ```
 
-## License
+---
 
-This project is licensed under the MIT License — see [LICENSE](LICENSE).
+# 🗺️ Roadmap
 
-## Contributors
+MAR is under active development.
 
-- **Malik Taimoor Awan** — creator and maintainer ([@yours._malik](https://instagram.com/yours._malik))
+```text
+MAR 1.0
+ │
+ ├── Foundation Architecture
+ │     ├── Transformer implementation
+ │     ├── GQA
+ │     ├── RoPE
+ │     ├── SwiGLU
+ │     └── RMSNorm
+ │
+ ├── Training
+ │     ├── BPE tokenizer
+ │     ├── Dataset pipeline
+ │     ├── Pretraining
+ │     └── Evaluation
+ │
+ ├── Inference
+ │     ├── GGUF
+ │     ├── llama.cpp
+ │     ├── Quantization
+ │     └── CPU optimization
+ │
+ ├── Platform
+ │     ├── Rust API
+ │     ├── Desktop app
+ │     ├── RAG
+ │     └── OpenAI-compatible API
+ │
+ └── Future
+       ├── Larger MAR checkpoints
+       ├── Improved bilingual capabilities
+       ├── Tool calling
+       ├── Multimodal research
+       └── Distributed inference
+```
 
-Built with ❤️ from Pakistan.
+---
+
+# 🤝 Contributing
+
+MAR is open to developers, researchers, students, and AI enthusiasts.
+
+Contributions are welcome in areas including:
+
+- Model architecture
+- Training infrastructure
+- Dataset preparation
+- Rust performance
+- Local inference
+- Desktop UI
+- Documentation
+- Testing
+- Evaluation
+
+Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before submitting a pull request.
+
+---
+
+# 🔐 Security
+
+Found a security issue?
+
+Please avoid opening a public issue containing vulnerability details.
+
+See [`SECURITY.md`](SECURITY.md) for responsible disclosure instructions.
+
+---
+
+# 📜 License
+
+MAR 1.0 is released under the **MIT License**.
+
+See [`LICENSE`](LICENSE) for details.
+
+---
+
+# 👨‍💻 Creator
+
+**Malik Taimoor Awan**
+
+Creator & Maintainer of **MAR — Markhor AI**
+
+[![GitHub](https://img.shields.io/badge/GitHub-6t9xstar-181717?style=for-the-badge&logo=github)](https://github.com/6t9xstar)
+[![Instagram](https://img.shields.io/badge/Instagram-yours._malik-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/yours._malik)
+
+---
+
+<div align="center">
+
+## 🐐 MAR
+
+### Markhor AI
+
+**Built from Pakistan 🇵🇰 · Built for Developers 🌍**
+
+Open source. Local first. Built to evolve.
+
+<br>
+
+⭐ **Star MAR if you believe powerful AI should be open and accessible.**
+
+</div>
